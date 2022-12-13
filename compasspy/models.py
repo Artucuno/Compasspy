@@ -58,7 +58,7 @@ class User(BaseModel):
     namePrefLastId: Optional[str] # "Lastname, Firstname (displayCode)"
     nif: Optional[str] # "Firstname Lastname (displayCode)"
     ns: str # Fullname with uppercase Lastname
-    campusId: int # Campus they work in
+    campusId: Optional[int] # Campus they work in
     baseRole: int # Role in the school
     ce: Optional[str] # Unsure
     displayCode: str # Teacher Display code
@@ -79,12 +79,12 @@ class UserDetailsBlob(BaseModel):
     chroniclePinnedCount: Optional[int]
     userDisplayCode: str # Student ID
     userSussiID: Optional[str] # Secondary Student ID
-    userDetails: str # Time since Date of Birth
+    userDetails: Optional[str] # Time since Date of Birth
     userEmail: str
     userFirstName: str
     userLastName: str
-    userYearLevel: str # Year Level String
-    userYearLevelId: int # Year Level Number
+    userYearLevel: Optional[str] # Year Level String
+    userYearLevelId: Optional[int] # Year Level Number
     userPreferredName: Optional[str]
     userPreferredLastName: Optional[str]
     userFullName: str
@@ -94,7 +94,7 @@ class UserDetailsBlob(BaseModel):
     userSquarePhotoPath: Optional[str] # Square Photo
     userHouse: Optional[str] # User House Group
     userGenderPronouns: Optional[str] # Not implemented at my school
-    userFormGroup: str # Year / House
+    userFormGroup: Optional[str] # Year / House
     userSchoolURL: Optional[str]
     userSchoolId: Optional[str]
     userTimeLinePeriods: List[TimelinePeriod]
@@ -177,6 +177,31 @@ class GenericMobileResponse(BaseModel):
     __type: Optional[str]
     data: List[CalendarTransport]
 
+class Task(BaseModel):
+    __type: Optional[str]
+    id: int
+    taskName: Optional[str]
+    status: bool
+    dueDate: Optional[str]
+
+class Account(BaseModel):
+    __type: Optional[str]
+    userId: int
+    firstName: str
+    lastName: str
+    name: str
+    accountId: Optional[str]
+    compassPersonId: Optional[str]
+    yearLevelId: Optional[int]
+    username: Optional[str]
+    userStatus: Optional[int]
+    schoolId: Optional[str]
+    paymentMethods: Optional[list]
+    isWalletEnabled: bool
+    balance: Optional[int]
+    imageUrl: Optional[str]
+    freeMeals: Optional[int] # Unsure what type this uses (Just assuming int)
+
 def getType(tp: str): # Converts __type to a class model
     p = {
     "UserDetailsBlob": UserDetailsBlob,
@@ -188,7 +213,9 @@ def getType(tp: str): # Converts __type to a class model
     "LC": Location,
     "AlertItem:http://jdlf.com.au/ns/data/newsfeed": AlertItem,
     "GenericMobileResponse:http://jdlf.com.au/ns/data/mobile/": GenericMobileResponse,
-    "CalendarTransport:http://jdlf.com.au/ns/data/mobile": CalendarTransport
+    "CalendarTransport:http://jdlf.com.au/ns/data/mobile": CalendarTransport,
+    "Task:http://jdlf.com.au/ns/data/tasks": Task,
+    "Account:http://jdlf.com.au/ns/data/accounts": Account
     }
     if tp in p:
         return p[tp]
