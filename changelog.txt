@@ -1,3 +1,6 @@
+===== v2.0 Library Updates =====
++ Rewrote all functions to use Compass endpoints instead of compassapi.xyz endpoints
+
 ===== v1.3 Library Updates =====
 
 Some big updates were made in v1.3, make sure to update by using `pip install -U compasspy`

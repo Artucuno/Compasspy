@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='compasspy',
-    version='1.3',
+    version='2.0',
     description='API client for compass.education',
     url='https://github.com/Artucuno/compasspy',
     author='Artucuno',

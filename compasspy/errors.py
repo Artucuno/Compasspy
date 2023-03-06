@@ -4,6 +4,10 @@ class UnknownType(Exception):
     """Raised when an unknown __type is used"""
     pass
 
+class APIError(Exception):
+    """Raised when API doesn't return JSON"""
+    pass
+
 # Errors from the Compass API
 
 class CompassInvalidArgument(Exception):
