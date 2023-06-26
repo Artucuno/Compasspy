@@ -1,24 +1,7 @@
-===== v2.0 Library Updates =====
-+ Rewrote all functions to use Compass endpoints instead of compassapi.xyz endpoints
-
-===== v1.3 Library Updates =====
-
-Some big updates were made in v1.3, make sure to update by using `pip install -U compasspy`
-
-+ Updated login method
-    - Removed the need for a userId
-    - Added School Subdomain
-    - self.user changed from `UserDetailsBlob` to `Account`
-
-===== CompassAPI Updates =====
-
-+ All requests now need the 'subdomain' argument
-+ Fixed the date argument for /api/v1/GetTimetable
-+ Added /api/v1/GetTaskItems
-  - Allows you to get your Tasks (Located under your timetable)
-+ Added /api/v1/SaveTaskItem
-  - Allows you to save a Task item to your tasks
-
-I will update the API docs soon.
-
-https://compassapi.xyz
+===== v3.0 Library Updates =====
++ Added Documentation to functions
++ Added Staff Endpoints
+  - getAllStudents()
+    - Returns a list of all students
+  - getAllStudentsBasic()
+    - Returns a list of all students with only basic information
