@@ -195,7 +195,6 @@ class Compass:
         for f in x['d']:
             a += [UserBasic.parse_obj(f)]
         return a
-        #https://spcctdbb-nsw.compass.education/Services/User.svc/GetAllStudentsBasic?sessionstate=readonly
 
     def login(self) -> bool:
         """
